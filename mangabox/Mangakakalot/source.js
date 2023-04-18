@@ -1434,7 +1434,6 @@ Object.defineProperty(exports, "decodeXMLStrict", { enumerable: true, get: funct
 
 },{"./decode.js":62,"./encode.js":64,"./escape.js":65}],70:[function(require,module,exports){
 "use strict";
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MangaBox = exports.getExportVersion = void 0;
 const types_1 = require("@paperback/types");
@@ -1507,7 +1506,7 @@ class MangaBox {
             id: 'main',
             header: 'Source Settings',
             isHidden: false,
-            rows: async () => [(0, MangaBoxSettings_1.chapterSettings)(this.stateManager)],
+            rows: async () => [(0, MangaBoxSettings_1.chapterSettings)(this.stateManager)]
         });
     }
     getMangaShareUrl(mangaId) { return `${mangaId}`; }
@@ -1666,7 +1665,6 @@ exports.MangaBox = MangaBox;
 
 },{"./MangaBoxHelpers":71,"./MangaBoxParser":72,"./MangaBoxSettings":73,"@paperback/types":61}],71:[function(require,module,exports){
 "use strict";
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.URLBuilder = void 0;
 class URLBuilder {
@@ -1779,8 +1777,8 @@ class MangaBoxParser {
                 App.createTagSection({
                     id: '0',
                     label: 'genres',
-                    tags: tags.map(t => App.createTag(t)),
-                }),
+                    tags: tags.map(t => App.createTag(t))
+                })
             ];
             return App.createSourceManga({
                 id: mangaId,
@@ -1790,8 +1788,8 @@ class MangaBoxParser {
                     status: status,
                     author: author ? author : 'Unkown',
                     desc: desc,
-                    tags: TagSection,
-                }),
+                    tags: TagSection
+                })
             });
         };
         this.parseChapters = ($, source) => {
@@ -1854,7 +1852,7 @@ class MangaBoxParser {
                 App.createTagSection({
                     id: '0',
                     label: 'genres',
-                    tags: genres.map(t => App.createTag(t)),
+                    tags: genres.map(t => App.createTag(t))
                 })
             ];
             return TagSection;
