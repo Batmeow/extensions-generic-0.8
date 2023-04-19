@@ -1941,7 +1941,7 @@ const MangaBox_1 = require("../MangaBox");
 const MangaBoxHelpers_1 = require("../MangaBoxHelpers");
 const SITE_DOMAIN = 'https://mangakakalot.com';
 exports.MangakakalotInfo = {
-    version: (0, MangaBox_1.getExportVersion)('0.0.2'),
+    version: (0, MangaBox_1.getExportVersion)('0.0.3'),
     name: 'Mangakakalot',
     icon: 'icon.png',
     author: 'Batmeow',
@@ -2068,8 +2068,8 @@ class Mangakakalot extends MangaBox_1.MangaBox {
             App.createTagSection({
                 id: '0',
                 label: 'genres',
-                tags: tags.map(t => App.createTag(t)),
-            }),
+                tags: tags.map(t => App.createTag(t))
+            })
         ];
         return TagSection;
     }

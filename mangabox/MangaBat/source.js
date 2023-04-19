@@ -1440,7 +1440,7 @@ const types_1 = require("@paperback/types");
 const MangaBox_1 = require("../MangaBox");
 const SITE_DOMAIN = 'https://h.mangabat.com';
 exports.MangaBatInfo = {
-    version: (0, MangaBox_1.getExportVersion)('0.0.2'),
+    version: (0, MangaBox_1.getExportVersion)('0.0.3'),
     name: 'MangaBat',
     icon: 'icon.png',
     author: 'Batmeow',

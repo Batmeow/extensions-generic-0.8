@@ -1938,7 +1938,7 @@ const types_1 = require("@paperback/types");
 const MangaBox_1 = require("../MangaBox");
 const SITE_DOMAIN = 'https://manganato.com';
 exports.ManganatoInfo = {
-    version: (0, MangaBox_1.getExportVersion)('0.0.2'),
+    version: (0, MangaBox_1.getExportVersion)('0.0.3'),
     name: 'Manganato',
     icon: 'icon.png',
     author: 'Batmeow',
