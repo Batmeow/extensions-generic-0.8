@@ -14707,13 +14707,17 @@ var _Sources = (() => {
       let language = source.language;
       if (mangaId.toUpperCase().endsWith("-RAW") && source.language == "\u{1F1EC}\u{1F1E7}") language = "\u{1F1F0}\u{1F1F7}";
       for (const chapter of $2("li", "div#chapterlist").toArray()) {
-        const title = (0, import_html_entities.decode)($2("span.chapternum", chapter).text().trim());
+        const title = (0, import_html_entities.decode)($2("span.chapternum", chapter).text().trim()).replace(/\s+/g, " ");
         const date = convertDate($2("span.chapterdate", chapter).text().trim(), source);
         const id = chapter.attribs["data-num"] ?? "";
         const chapterNumberRegex = id.match(/(\d+\.?\d?)+/);
         let chapterNumber = 0;
         if (chapterNumberRegex && chapterNumberRegex[1]) {
           chapterNumber = Number(chapterNumberRegex[1]);
+        }
+        const isLocked = $2(".text-gold", chapter).length;
+        if (isLocked) {
+          continue;
         }
         if (!id || typeof id === "undefined") {
           throw new Error(`Could not parse out ID when getting chapters for postId: ${mangaId}`);
@@ -14977,7 +14981,7 @@ var _Sources = (() => {
   }
 
   // src/MangaStream.ts
-  var BASE_VERSION = "3.1.0";
+  var BASE_VERSION = "3.1.1";
   var getExportVersion = (EXTENSION_VERSION) => {
     return BASE_VERSION.split(".").map((x, index2) => Number(x) + Number(EXTENSION_VERSION.split(".")[index2])).join(".");
   };
