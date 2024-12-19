@@ -16145,19 +16145,15 @@ Please go to the homepage of <${this.baseUrl}> and press the cloud icon.`);
   // src/MangaOrigines/MangaOrigines.ts
   var DOMAIN = "https://mangas-origines.fr";
   var MangaOriginesInfo = {
-    version: getExportVersion("0.0.0"),
+    version: getExportVersion("0.0.1"),
     name: "MangaOrigines",
     description: `Extension that pulls manga from ${DOMAIN}`,
     author: "Netsky",
     authorWebsite: "http://github.com/TheNetsky",
     icon: "icon.png",
-    contentRating: import_types3.ContentRating.ADULT,
+    contentRating: import_types3.ContentRating.MATURE,
     websiteBaseURL: DOMAIN,
     sourceTags: [
-      {
-        text: "18+",
-        type: import_types3.BadgeColor.YELLOW
-      },
       {
         text: "French",
         type: import_types3.BadgeColor.GREY
@@ -16173,7 +16169,7 @@ Please go to the homepage of <${this.baseUrl}> and press the cloud icon.`);
     constructor() {
       super(...arguments);
       this.baseUrl = DOMAIN;
-      this.chapterEndpoint = 3;
+      this.chapterEndpoint = 1;
       this.directoryPath = "oeuvre";
       this.language = "\u{1F1EB}\u{1F1F7}";
     }
