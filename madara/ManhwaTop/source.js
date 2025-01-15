@@ -3084,7 +3084,9 @@ var _Sources = (() => {
         return node;
       }
       if (recurse && hasChildren(node) && node.children.length > 0) {
-        return findOne(test, node.children, true);
+        const found = findOne(test, node.children, true);
+        if (found)
+          return found;
       }
     }
     return null;
@@ -16146,7 +16148,7 @@ Please go to the homepage of <${this.baseUrl}> and press the cloud icon.`);
   // src/ManhwaTop/ManhwaTop.ts
   var DOMAIN = "https://manhwatop.com";
   var ManhwaTopInfo = {
-    version: getExportVersion("0.0.0"),
+    version: getExportVersion("0.0.1"),
     name: "ManhwaTop",
     description: `Extension that pulls manga from ${DOMAIN}`,
     author: "Netsky",
@@ -16161,6 +16163,7 @@ Please go to the homepage of <${this.baseUrl}> and press the cloud icon.`);
     constructor() {
       super(...arguments);
       this.baseUrl = DOMAIN;
+      this.chapterEndpoint = 1;
     }
   };
   return __toCommonJS(ManhwaTop_exports);
