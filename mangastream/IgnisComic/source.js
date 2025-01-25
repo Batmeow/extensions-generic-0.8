@@ -886,11 +886,11 @@ var _Sources = (() => {
     }
   });
 
-  // src/InfernalVoidScans/InfernalVoidScans.ts
-  var InfernalVoidScans_exports = {};
-  __export(InfernalVoidScans_exports, {
-    InfernalVoidScans: () => InfernalVoidScans,
-    InfernalVoidScansInfo: () => InfernalVoidScansInfo
+  // src/IgnisComic/IgnisComic.ts
+  var IgnisComic_exports = {};
+  __export(IgnisComic_exports, {
+    IgnisComic: () => IgnisComic,
+    IgnisComicInfo: () => IgnisComicInfo
   });
   var import_types4 = __toESM(require_lib());
 
@@ -15458,29 +15458,30 @@ Please go to the homepage of <${this.baseUrl}> and press the cloud icon.`);
     }
   };
 
-  // src/InfernalVoidScans/InfernalVoidScans.ts
-  var DOMAIN = "https://hivetoon.com";
-  var InfernalVoidScansInfo = {
-    version: getExportVersion("0.0.4"),
-    name: "InfernalVoidScans",
+  // src/IgnisComic/IgnisComic.ts
+  var DOMAIN = "https://igniscomic.com";
+  var IgnisComicInfo = {
+    version: getExportVersion("0.0.0"),
+    name: "IgnisComic",
     description: `Extension that pulls manga from ${DOMAIN}`,
-    author: "nicknitewolf",
-    authorWebsite: "http://github.com/nicknitewolf",
+    author: "Netsky",
+    authorWebsite: "http://github.com/TheNetsky",
     icon: "icon.png",
     contentRating: import_types4.ContentRating.MATURE,
     websiteBaseURL: DOMAIN,
     intents: import_types4.SourceIntents.MANGA_CHAPTERS | import_types4.SourceIntents.HOMEPAGE_SECTIONS | import_types4.SourceIntents.CLOUDFLARE_BYPASS_REQUIRED | import_types4.SourceIntents.SETTINGS_UI,
     sourceTags: []
   };
-  var InfernalVoidScans = class extends MangaStream {
+  var IgnisComic = class extends MangaStream {
     constructor() {
       super(...arguments);
       this.baseUrl = DOMAIN;
     }
     configureSections() {
+      this.homescreen_sections["latest_update"].selectorFunc = ($2) => $2("div.bsx", $2("h2:contains(Latest Update)")?.parent()?.next());
       this.homescreen_sections["new_titles"].enabled = false;
     }
   };
-  return __toCommonJS(InfernalVoidScans_exports);
+  return __toCommonJS(IgnisComic_exports);
 })();
 this.Sources = _Sources; if (typeof exports === 'object' && typeof module !== 'undefined') {module.exports.Sources = this.Sources;}
