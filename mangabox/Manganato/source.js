@@ -1463,7 +1463,7 @@ var _Sources = (() => {
   };
 
   // src/MangaBox.ts
-  var BASE_VERSION = "4.0.2";
+  var BASE_VERSION = "4.0.0";
   var getExportVersion = (EXTENSION_VERSION) => {
     return BASE_VERSION.split(".").map((x, index) => Number(x) + Number(EXTENSION_VERSION.split(".")[index])).join(".");
   };
@@ -1660,12 +1660,34 @@ var _Sources = (() => {
         metadata
       });
     }
+    async getCloudflareBypassRequestAsync() {
+      return App.createRequest({
+        url: `${this.bypassPage || this.baseURL}/`,
+        method: "GET",
+        headers: {
+          "referer": `${this.baseURL}/`,
+          "origin": `${this.baseURL}/`,
+          "user-agent": await this.requestManager.getDefaultUserAgent()
+        }
+      });
+    }
+    checkResponseError(response) {
+      const status = response.status;
+      switch (status) {
+        case 403:
+        case 503:
+          throw new Error(`CLOUDFLARE BYPASS ERROR:
+Please go to the homepage of <${this.baseURL}> and press the cloud icon.`);
+        case 404:
+          throw new Error(`The requested page ${response.request.url} was not found!`);
+      }
+    }
   };
 
   // src/Manganato/Manganato.ts
   var SITE_DOMAIN = "https://manganato.com";
   var ManganatoInfo = {
-    version: getExportVersion("0.0.3"),
+    version: getExportVersion("0.1.0"),
     name: "Manganato",
     icon: "icon.png",
     author: "Batmeow",
@@ -1674,7 +1696,7 @@ var _Sources = (() => {
     contentRating: import_types2.ContentRating.MATURE,
     websiteBaseURL: SITE_DOMAIN,
     sourceTags: [],
-    intents: import_types2.SourceIntents.SETTINGS_UI | import_types2.SourceIntents.HOMEPAGE_SECTIONS | import_types2.SourceIntents.MANGA_CHAPTERS
+    intents: import_types2.SourceIntents.SETTINGS_UI | import_types2.SourceIntents.HOMEPAGE_SECTIONS | import_types2.SourceIntents.MANGA_CHAPTERS | import_types2.SourceIntents.CLOUDFLARE_BYPASS_REQUIRED
   };
   var Manganato = class extends MangaBox {
     constructor() {
@@ -1689,6 +1711,8 @@ var _Sources = (() => {
       this.mangaListSelector = "div.panel-content-genres div.content-genres-item";
       // Selector for subtitle in manga list.
       this.mangaSubtitleSelector = "a.genres-item-chap.text-nowrap";
+      // Page that requires captcha to access.
+      this.bypassPage = "https://chapmanganato.to/";
     }
   };
   return __toCommonJS(Manganato_exports);
