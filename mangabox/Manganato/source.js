@@ -1463,7 +1463,7 @@ var _Sources = (() => {
   };
 
   // src/MangaBox.ts
-  var BASE_VERSION = "4.0.0";
+  var BASE_VERSION = "4.0.1";
   var getExportVersion = (EXTENSION_VERSION) => {
     return BASE_VERSION.split(".").map((x, index) => Number(x) + Number(EXTENSION_VERSION.split(".")[index])).join(".");
   };
@@ -1573,6 +1573,7 @@ var _Sources = (() => {
         sectionCallback(section.section);
         promises.push(
           this.requestManager.schedule(section.request, 1).then((response) => {
+            this.checkResponseError(response);
             const $ = this.cheerio.load(response.data);
             const items = this.parser.parseManga($, this);
             section.section.items = items;
@@ -1587,6 +1588,7 @@ var _Sources = (() => {
         method: "GET"
       });
       const response = await this.requestManager.schedule(request, 1);
+      this.checkResponseError(response);
       const $ = this.cheerio.load(response.data);
       return this.parser.parseMangaDetails($, mangaId, this);
     }
@@ -1596,6 +1598,7 @@ var _Sources = (() => {
         method: "GET"
       });
       const response = await this.requestManager.schedule(request, 1);
+      this.checkResponseError(response);
       const $ = this.cheerio.load(response.data);
       return this.parser.parseChapters($, mangaId, this);
     }
@@ -1615,6 +1618,7 @@ var _Sources = (() => {
         ]
       });
       const response = await this.requestManager.schedule(request, 1);
+      this.checkResponseError(response);
       const $ = this.cheerio.load(response.data);
       return this.parser.parseChapterDetails($, mangaId, chapterId, this);
     }
@@ -1625,6 +1629,7 @@ var _Sources = (() => {
         method: "GET"
       });
       const response = await this.requestManager.schedule(request, 1);
+      this.checkResponseError(response);
       const $ = this.cheerio.load(response.data);
       const results = this.parser.parseManga($, this);
       metadata = !this.parser.isLastPage($) ? { page: page + 1 } : void 0;
@@ -1642,6 +1647,7 @@ var _Sources = (() => {
         method: "GET"
       });
       const response = await this.requestManager.schedule(request, 1);
+      this.checkResponseError(response);
       const $ = this.cheerio.load(response.data);
       return this.parser.parseTags($, this);
     }
@@ -1652,6 +1658,7 @@ var _Sources = (() => {
         method: "GET"
       });
       const response = await this.requestManager.schedule(request, 1);
+      this.checkResponseError(response);
       const $ = this.cheerio.load(response.data);
       const results = this.parser.parseManga($, this);
       metadata = !this.parser.isLastPage($) ? { page: page + 1 } : void 0;
