@@ -15459,9 +15459,9 @@ Please go to the homepage of <${this.baseUrl}> and press the cloud icon.`);
   };
 
   // src/IgnisComic/IgnisComic.ts
-  var DOMAIN = "https://igniscomic.com";
+  var DOMAIN = "https://manhuaga.com";
   var IgnisComicInfo = {
-    version: getExportVersion("0.0.0"),
+    version: getExportVersion("0.0.1"),
     name: "IgnisComic",
     description: `Extension that pulls manga from ${DOMAIN}`,
     author: "Netsky",
