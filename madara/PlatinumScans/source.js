@@ -16148,7 +16148,7 @@ Please go to the homepage of <${this.baseUrl}> and press the cloud icon.`);
   // src/PlatinumScans/PlatinumScans.ts
   var DOMAIN = "https://platinumscans.com";
   var PlatinumScansInfo = {
-    version: getExportVersion("0.0.0"),
+    version: getExportVersion("0.0.1"),
     name: "PlatinumScans",
     description: `Extension that pulls manga from ${DOMAIN}`,
     author: "Netsky",
@@ -16163,6 +16163,7 @@ Please go to the homepage of <${this.baseUrl}> and press the cloud icon.`);
     constructor() {
       super(...arguments);
       this.baseUrl = DOMAIN;
+      this.chapterEndpoint = 1;
       this.hasAdvancedSearchPage = false;
     }
   };
