@@ -16146,9 +16146,9 @@ Please go to the homepage of <${this.baseUrl}> and press the cloud icon.`);
   };
 
   // src/HariManga/HariManga.ts
-  var DOMAIN = "https://harimanga.com";
+  var DOMAIN = "https://harimanga.me";
   var HariMangaInfo = {
-    version: getExportVersion("0.0.0"),
+    version: getExportVersion("0.0.1"),
     name: "HariManga",
     description: `Extension that pulls manga from ${DOMAIN}`,
     author: "Netsky",
