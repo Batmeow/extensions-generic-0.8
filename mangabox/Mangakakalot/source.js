@@ -1813,12 +1813,8 @@ Please go to the homepage of <${this.baseURL}> and press the cloud icon.`);
         tags.push({ id, label });
       }
       tags.sort((a, b) => {
-        if (a.label > b.label) {
-          return 1;
-        }
-        if (a.label < b.label) {
-          return -1;
-        }
+        if (a.label > b.label) return 1;
+        if (a.label < b.label) return -1;
         return 0;
       });
       const TagSection3 = [
